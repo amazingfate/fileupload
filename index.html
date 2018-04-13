@@ -1,0 +1,36 @@
+<html>
+     <head><title>Upload File</title>
+     <script type="text/javascript" src="/js/jquery.min.js"></script>
+     </head>
+     <body>
+       <form id='upload' action='upload' enctype="multipart/form-data" method='post'>
+       <input type='file' name='file'/><br/>
+       <input type='button' id='submit' value='submit'/>
+       </form>
+     </body>
+     <script>
+
+       $('#submit').click(function(){
+           var form = $('form')[0];
+           var formData = new FormData(form);
+           formData.append('image', $('input[type=file]')[0].files[0]);
+           $.ajax({
+               url: 'file',
+               data: formData,
+               type: 'POST',
+               contentType: false,
+               processData: false,
+               success: function(data){
+                   var obj = jQuery.parseJSON(data);
+                   alert(obj.result);
+                   // TODO
+               },
+               error: function(data){
+                   var obj = jQuery.parseJSON(data);
+                   alert(data.result);
+               }
+           })
+       });
+
+     </script>
+   </html>
