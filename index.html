@@ -1,6 +1,6 @@
 <html>
      <head><title>Upload File</title>
-     <script type="text/javascript" src="/js/jquery.min.js"></script>
+     <script type="text/javascript" src="static/js/jquery.min.js"></script>
      </head>
      <body>
        <form id='upload' action='upload' enctype="multipart/form-data" method='post'>
@@ -22,7 +22,7 @@
                processData: false,
                success: function(data){
                    var obj = jQuery.parseJSON(data);
-                   alert(obj.result);
+                   alert(obj.url);
                    // TODO
                },
                error: function(data){
